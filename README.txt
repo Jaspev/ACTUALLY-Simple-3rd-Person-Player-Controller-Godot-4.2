@@ -1,4 +1,4 @@
-This is a 3rd person player controller that uses 2 scripts:
+This is a 3rd person player controller for Godot 4.2 that uses 2 scripts:
 One script for camera movement and one script for player movement.
 
 More in-depth breakdowns of how these work in the scripts themselves.

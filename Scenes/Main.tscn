@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdr638r16jpev"]
+
+[ext_resource type="PackedScene" uid="uid://dutcdtdc0ygky" path="res://Scenes/Player.tscn" id="1_3sqs3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_twfmm"]
+
+[sub_resource type="Sky" id="Sky_edr0k"]
+sky_material = SubResource("ProceduralSkyMaterial_twfmm")
+
+[sub_resource type="Environment" id="Environment_o4pcw"]
+background_mode = 2
+sky = SubResource("Sky_edr0k")
+
+[node name="main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o4pcw")
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.678961, 0.262875, -0.685499, -0.027831, 0.923814, 0.38183, 0.733646, 0.278326, -0.619918, 0, 6.83834, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_3sqs3")]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+size = Vector3(25, 2, 25)
+
+[node name="AroundTheMaxStepHeight" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.0471916, 8)
+use_collision = true
+size = Vector3(5, 0.1, 5)
+
+[node name="RandomBox" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50055, 0.969055, -6.49117)
+use_collision = true
+size = Vector3(4, 2, 6)
+
+[node name="Slope1" type="CSGBox3D" parent="."]
+transform = Transform3D(0.100674, 0.994919, 0, -0.994919, 0.100674, 0, 0, 0, 1, 7.67617, -0.10535, 9.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.320415, 0.947277, 0, -0.947277, 0.320415, 0, 0, 0, 1, 7.67617, 0.797281, 5.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, 7.42761, 1.52647, 1.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 5.99874, 1.52647, -2.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope5" type="CSGBox3D" parent="."]
+transform = Transform3D(0.920368, 0.391052, 0, -0.391052, 0.920368, 0, 0, 0, 1, 4.94308, 1.52647, -6.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Wall1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 12)
+use_collision = true
+size = Vector3(25, 4, 1)
+
+[node name="Wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -12)
+use_collision = true
+size = Vector3(25, 4, 1)
+
+[node name="Wall3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 0)
+use_collision = true
+size = Vector3(1, 4, 23)
+
+[node name="Wall4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 0)
+use_collision = true
+size = Vector3(1, 4, 23)

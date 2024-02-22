@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://cowuyegr1esdo"]
+
+[ext_resource type="Script" path="res://Scenes/text_box.gd" id="1_7t718"]
+[ext_resource type="FontFile" uid="uid://wtfw611j5n11" path="res://Assets/Fonts/KarenFat.ttf" id="1_n1xd4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si1n7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[node name="TextBox" type="CanvasLayer"]
+script = ExtResource("1_7t718")
+
+[node name="TextBoxContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -431.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel" type="Panel" parent="TextBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_si1n7")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Start" type="Label" parent="TextBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_n1xd4")
+theme_override_font_sizes/font_size = 61
+text = "+"
+
+[node name="Text" type="Label" parent="TextBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_n1xd4")
+theme_override_font_sizes/font_size = 61
+text = "The quick brown fox jumps over the lazy dog! The quick brown fox jumps over the lazy dog! "
+autowrap_mode = 2
+clip_text = true
+
+[node name="End" type="Label" parent="TextBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_n1xd4")
+theme_override_font_sizes/font_size = 61
+text = "E"

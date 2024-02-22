@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dutcdtdc0ygky"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="2_w2um5"]
+[ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="3_ub28p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_djl6f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fpwuo"]
+size = Vector3(0.1, 0.1, 0.25)
+
+[sub_resource type="PrismMesh" id="PrismMesh_wimv6"]
+size = Vector3(0.25, 0.25, 0.1)
+
+[node name="Player" type="Node3D"]
+
+[node name="PlayerBody" type="CharacterBody3D" parent="."]
+top_level = true
+script = ExtResource("2_w2um5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3rsb5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_djl6f")
+
+[node name="Arrow" type="Node3D" parent="PlayerBody"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="PlayerBody/Arrow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.6)
+mesh = SubResource("BoxMesh_fpwuo")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PlayerBody/Arrow"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, -0.85)
+mesh = SubResource("PrismMesh_wimv6")
+skeleton = NodePath("../..")
+
+[node name="CamOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("3_ub28p")
+
+[node name="h" type="Node3D" parent="CamOrigin"]
+
+[node name="v" type="Node3D" parent="CamOrigin/h"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin/h/v"]
+spring_length = 4.0
+margin = 0.5
+
+[node name="Camera" type="Camera3D" parent="CamOrigin/h/v/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.013)
+fov = 80.0

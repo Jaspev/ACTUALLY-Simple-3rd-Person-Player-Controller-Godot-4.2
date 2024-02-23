@@ -17,10 +17,13 @@ There is no jump or sprint or anything. Just 3rd person camera movement and a pl
 lateral movement, aside from gravity affecting the player when falling off a surface.
 
 Disclaimers/Notes:
-	1. When you move the player in the main scene, it won't visually look like it's moving,
-	but it is! When you playtest you'll see the player starts at the changed position.
-	It just looks like that because the PlayerBody needs it's top_level property to be true.
-	
-	2. The max step height this controller can do is about 0.1m high.
-	
-	3. The arrow is just to show the rotation of the player model and how it works.
+
+When you move the player in the main scene, it won't visually look like it's moving,
+but it is! When you playtest you'll see the player starts at the changed position.
+It just looks like that because the PlayerBody needs it's top_level property to be true.
+
+The max step height this controller can do is about 0.1m high.
+
+The arrow is just to show the rotation of the player model and how it works.
+
+![example](https://github.com/Jaspev/ACTUALLY-Simple-3rd-Person-Player-Controller-Godot-4.2/assets/120768552/ac030489-780e-4fef-9999-e316863c481a)

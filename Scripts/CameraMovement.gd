@@ -1,15 +1,21 @@
 extends Node3D
 
-var mouse_sensitivity = 0.005
+var mouse_cam_sensitivity = 0.005
+var joystick_cam_sensitivity = 0.1
 var twist_input = 0.0
 var pitch_input = 0.0
+var input_dir
 
 @onready var twist_pivot = $h
 @onready var pitch_pivot = $h/v
-@onready var player_bod = $"../PlayerBody"
 
-func _process(delta):
-	# rotate cam depending on cam pivots
+func _physics_process(delta):
+	# joystick compatability
+	input_dir = Input.get_vector("look_left", "look_right", "look_up", "look_down")
+	twist_pivot.rotate_y(-input_dir.x * joystick_cam_sensitivity)
+	pitch_pivot.rotate_x(-input_dir.y * joystick_cam_sensitivity)
+	
+	# mouse compatability
 	# cam pivot rotations are gotten from the _unhandled_input func below
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
@@ -24,7 +30,8 @@ func _process(delta):
 	pitch_input = 0.0
 
 func _unhandled_input(event):
+	# inputs for mouse
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			twist_input = - event.relative.x * mouse_sensitivity
-			pitch_input = - event.relative.y * mouse_sensitivity
+			twist_input = -event.relative.x * mouse_cam_sensitivity
+			pitch_input = -event.relative.y * mouse_cam_sensitivity

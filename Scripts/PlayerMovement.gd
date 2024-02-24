@@ -33,7 +33,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	
 	# use input_dir movement vector to know which direction the player is facing, depending on the camera rotation 
-	var direction = (cam_h.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	# put .normalized() at the end of this line if you don't want the player to be able to slow walk using joystick
+	var direction = (cam_h.transform.basis * Vector3(input_dir.x, 0, input_dir.y))
 	
 	# if playerBody isn't on the floor, activate gravity
 	if not is_on_floor():
